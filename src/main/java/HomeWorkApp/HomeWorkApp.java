@@ -2,10 +2,13 @@ package HomeWorkApp;
 
 public class HomeWorkApp {
     public static void main(String[] args) {
-        printThreeWords();
-        checkSumSign();
-        printColor();
-        compareNumbers();
+        int s =5;
+        int d = (int)Math.ceil((double) s/2);
+        System.out.println(d);
+//        printThreeWords();
+//        checkSumSign();
+//        printColor();
+//        compareNumbers();
     }
 
 

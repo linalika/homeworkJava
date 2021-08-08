@@ -13,11 +13,11 @@ public class lesson4 {
     /**
      * Размер поля
      */
-    public static final int SIZE = 3;
+    public static final int SIZE = 5;
     /**
      * Сколько точек для победы
      */
-    public static final int DOTS_TO_WIN = 3;
+    public static final int DOTS_TO_WIN = 4;
     /**
      * Пустая ячейка
      */
@@ -31,11 +31,14 @@ public class lesson4 {
 
     public static final Random RANDOM = new Random();
 
+    public static int turnCounter = 0;
+
     public static void main(String[] args) {
         initMap();
         printMap();
         while (true) {
             humanTurn();
+            turnCounter ++;
             if (checkWin(DOT_X)) {
                 System.out.println("Выиграл человек");
                 break;
@@ -137,28 +140,41 @@ public class lesson4 {
 
     }
 
+    public static boolean aiCheckGoodTurn(int turnCounter){
+        int mapMiddle = (int)Math.ceil((double) SIZE/2);
+        if(turnCounter == 1 && map[mapMiddle][mapMiddle] ==DOT_EMPTY){
+            return true;
+        }
+        return false;
+
+    }
+
     public static boolean checkWin(char sym) {
         int counterToHorizontal =0;
         int counterToWinCross =0;
         int counterToWinVertical =0;
-        for (int i = 0; i < map.length; i++) {
-            for (int j =0; j<map.length;j++){
+        int counterToWinCrossRight =0;
+        int counterToCrossColumn =SIZE -1;
+        for (int i = 0; i < SIZE; i++) {
+            for (int j =0; j<SIZE;j++){
                 if(map[i][j]==sym){
                     counterToWinVertical ++;
                 }
                 if (map[j][i]==sym){
                     counterToHorizontal ++;
                 }
-            }
-            for(int j = map.length -1 ; j>=0; j--){
-                if (map[j][i]==sym){
-                    counterToWinCross ++;
-                    break;
+                if (i==j && map[i][j]==sym){
+                    counterToWinCrossRight ++;
                 }
             }
-            if(counterToWinCross == 3 || counterToWinVertical== 3 || counterToHorizontal== 3){
+            if (map[counterToCrossColumn][i]==sym) {
+                counterToWinCross++;
+            }
+
+            if(counterToWinCross == DOTS_TO_WIN || counterToWinVertical== DOTS_TO_WIN || counterToHorizontal== DOTS_TO_WIN || counterToWinCrossRight == DOTS_TO_WIN){
                 return true;
             }
+            counterToCrossColumn --;
             counterToHorizontal =0;
             counterToWinVertical = 0;
         }
