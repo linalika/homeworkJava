@@ -184,7 +184,5 @@ public class lesson4 {
         return false;
 
     }
-
-
 }
 
