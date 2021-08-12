@@ -2,7 +2,7 @@ package HomeWorkApp6;
 
 public class Cat extends Animal {
     private static int catCounter = 0;
-    protected static int maxRunDistance = 200;
+    protected final static int maxRunDistance = 200;
 
     protected static int getAnimalCounter() {
         return catCounter;

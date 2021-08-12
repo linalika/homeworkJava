@@ -2,8 +2,8 @@ package HomeWorkApp6;
 
 public class Dog extends Animal {
     private static int dogCounter = 0;
-    protected static int maxSwimDistance = 10;
-    protected static int maxRunDistance = 500;
+    protected final static int maxSwimDistance = 10;
+    protected final static int maxRunDistance = 500;
 
     public Dog(String name) {
         super(name);
