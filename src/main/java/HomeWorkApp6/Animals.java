@@ -9,7 +9,7 @@ public class Animals {
         teddyDog.run(2000);
 
         Cat abbeyCat = new Cat("Эбби");
-        abbeyCat.run(100);
+        abbeyCat.run(300);
         abbeyCat.swim(30);
 
         Cat barneyCat = new Cat("Барни");

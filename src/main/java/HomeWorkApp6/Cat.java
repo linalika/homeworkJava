@@ -2,6 +2,7 @@ package HomeWorkApp6;
 
 public class Cat extends Animal {
     private static int catCounter = 0;
+    protected static int maxRunDistance = 200;
 
     protected static int getAnimalCounter() {
         return catCounter;
@@ -9,10 +10,10 @@ public class Cat extends Animal {
 
     @Override
     protected void run(int distance) {
-        if (distance <= this.maxRunDistance) {
+        if (distance <= maxRunDistance) {
             super.run(distance);
         } else {
-            System.out.println("Кошка имеет ограничение в " + this.maxRunDistance);
+            System.out.println("Коты имеют ограничение в " + maxRunDistance + " м");
         }
     }
 
@@ -22,9 +23,8 @@ public class Cat extends Animal {
     }
 
     public Cat(String name) {
-        super(name);
-        this.maxRunDistance = 500;
-        this.catCounter++;
+        super(name, 200);
+        catCounter++;
     }
 
     public static int getCatCounter() {
