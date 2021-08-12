@@ -6,11 +6,11 @@ public class Employee {
     private String position;
     private String email;
     private String phoneNumber;
-    private int salary;
-    private int age;
+    private String salary;
+    private String age;
 
 
-    public Employee(String fullName, String position, String email, String phoneNumber, int salary, int age){
+    public Employee(String fullName, String position, String email, String phoneNumber, String salary, String age){
         this.fullName = fullName;
         this.position = position;
         this.email = email;
