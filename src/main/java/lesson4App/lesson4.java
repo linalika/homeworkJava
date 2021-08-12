@@ -32,15 +32,19 @@ public class lesson4 {
     public static final Random RANDOM = new Random();
 
     public static int turnCounter = 0;
+    public static int  mapMiddle = (int)Math.ceil((double) SIZE/2);
 
     public static void main(String[] args) {
         initMap();
         printMap();
+        System.out.println(mapMiddle);
         while (true) {
             humanTurn();
             turnCounter ++;
+
             if (checkWin(DOT_X)) {
                 System.out.println("Выиграл человек");
+
                 break;
             }
             if (isMapFull()) {
@@ -127,12 +131,18 @@ public class lesson4 {
     }
 
     public static void aiTurn() {
-        int x;
-        int y;
-        do {
-            x = RANDOM.nextInt(SIZE);
-            y = RANDOM.nextInt(SIZE);
-        } while (!isCellValid(x, y));
+        int x = 0;
+        int y = 0;
+        if(turnCounter == 1 && map[mapMiddle][mapMiddle] == DOT_EMPTY){
+            x = mapMiddle -1;
+            y =mapMiddle -1;
+        } else{
+            do {
+                x = RANDOM.nextInt(SIZE);
+                y = RANDOM.nextInt(SIZE);
+            } while (!isCellValid(x, y));
+
+        }
         map[x][y] = DOT_O;
         System.out.printf("Робот ходит в точку %d %d", x + 1, y + 1);
 
@@ -140,14 +150,6 @@ public class lesson4 {
 
     }
 
-    public static boolean aiCheckGoodTurn(int turnCounter){
-        int mapMiddle = (int)Math.ceil((double) SIZE/2);
-        if(turnCounter == 1 && map[mapMiddle][mapMiddle] ==DOT_EMPTY){
-            return true;
-        }
-        return false;
-
-    }
 
     public static boolean checkWin(char sym) {
         int counterToHorizontal =0;
@@ -182,5 +184,7 @@ public class lesson4 {
         return false;
 
     }
+
+
 }
 
