@@ -6,14 +6,19 @@ package lesson7;
 
 public class App {
     public static void main(String[] args) {
-        Cat cat = new Cat("Boris",20);
+        Cat[] cats = new Cat[3];
+        cats[0] = new Cat("Boris", 30);
+        cats[1] = new Cat("Barsik", 30);
+        cats[2] = new Cat("Ponchick", 50);
         Plate plate = new Plate(100);
-//        int newAmountOfFood = plate.getAmountOfFood() - cat.getAppetite();
-//        plate.setAmountOfFood(newAmountOfFood);
-        //plate.decreaseAmountOfFood(cat.getAppetite());
+        for (Cat cat : cats) {
+            cat.eat(plate);
+        }
 
-        cat.eat(plate);
-        System.out.println(cat);
+        for (Cat cat : cats) {
+            System.out.println(cat.getName() +" " + cat.isSatiety());
+        }
+
         System.out.println(plate);
     }
 }

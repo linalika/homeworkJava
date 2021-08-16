@@ -12,10 +12,11 @@ public class Plate {
     }
 
     public Plate(int amountOfFood) {
+
         this.amountOfFood = amountOfFood;
     }
 
-    public void decreaseAmountOfFood(int amount){
+    public void decreaseAmountOfFood(int amount) {
         this.amountOfFood -= amount;
     }
 

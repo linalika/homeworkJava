@@ -3,10 +3,16 @@ package lesson7;
 public class Cat {
     private String name;
     private int appetite;
+    private boolean satiety;
+
+    public boolean isSatiety() {
+        return satiety;
+    }
 
     public Cat(String name, int appetite) {
         this.name = name;
         this.appetite = appetite;
+        satiety = false;
     }
 
     public String getName() {
@@ -32,10 +38,14 @@ public class Cat {
                 ", appetite=" + appetite +
                 '}';
     }
-    public void eat(Plate plate){
-        if (this.appetite>plate.getAmountOfFood()){
-            //не наелся
+
+    public void eat(Plate plate) {
+        if (this.appetite >= plate.getAmountOfFood()) {
+            System.out.println(this.name + " не наелся");
+        } else {
+            plate.decreaseAmountOfFood(this.getAppetite());
+            this.satiety = true;
         }
-        plate.decreaseAmountOfFood(this.getAppetite());
+
     }
 }
